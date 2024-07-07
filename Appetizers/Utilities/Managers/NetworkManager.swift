@@ -50,6 +50,24 @@ final class NetworkManager {
         task.resume()
     }
     
+    //By async await
+    func getAppetizersByAsyncAwait() async throws -> [Appetizer]{
+        guard let url = URL(string: appetizersList) else {
+            throw APError.invalidURL
+        }
+        
+        let (data,_) = try await URLSession.shared.data(from: url)
+        
+        do{
+           let decoder = JSONDecoder()
+            let decodedResponse = try decoder.decode(AppetizerResponse.self, from: data)
+            return decodedResponse.request ?? []
+        }catch(let err){
+            print(err.localizedDescription)
+            throw APError.invalidData
+        }
+    }
+    
     func downloadImage(fromUrl url:String, completed: @escaping(UIImage?) -> Void){
         let cacheKey = NSString(string: url)
         if let image = cache.object(forKey: cacheKey){

@@ -11,7 +11,7 @@ struct AppetizerResponse: Decodable {
     let request: [Appetizer]?
 }
 
-struct Appetizer: Decodable {
+struct Appetizer: Decodable, Identifiable {
     let id: Int?
     let name: String?
     let protein: Int?
@@ -44,9 +44,40 @@ struct MockData {
                                            protein: 24,
                                            imageURL: "",
                                            price: 25.30,
-                                           description: "This is my sample appetizer description",
+                                           description: "This is my sample appetizer description, This perfectly thin cut just melts in your mouth.",
                                            calories: 600,
                                            carbs: 20)
     
     static let Appetizers = [sampleAppetizer,sampleAppetizer,sampleAppetizer,sampleAppetizer]
+    
+    
+    static let sampleAppetizerOne = Appetizer(id: 001,
+                                           name: "Sample Appetizer One",
+                                           protein: 24,
+                                           imageURL: "",
+                                           price: 25.30,
+                                           description: "This is my sample appetizer description, This perfectly thin cut just melts in your mouth.",
+                                           calories: 600,
+                                           carbs: 20)
+    
+    static let sampleAppetizerTwo = Appetizer(id: 002,
+                                           name: "Sample Appetizer Two",
+                                           protein: 24,
+                                           imageURL: "",
+                                           price: 25.30,
+                                           description: "This is my sample appetizer description, This perfectly thin cut just melts in your mouth.",
+                                           calories: 600,
+                                           carbs: 20)
+    
+    static let sampleAppetizerThree = Appetizer(id: 003,
+                                           name: "Sampe Appetizer Three",
+                                           protein: 24,
+                                           imageURL: "",
+                                           price: 25.30,
+                                           description: "This is my sample appetizer description, This perfectly thin cut just melts in your mouth.",
+                                           calories: 600,
+                                           carbs: 20)
+    
+    static let OrdersAppetizers = [sampleAppetizerOne,sampleAppetizerTwo,sampleAppetizerThree]
+    
 }
